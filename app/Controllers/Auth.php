@@ -55,10 +55,6 @@ class Auth extends BaseController
             $validate = $this->validation->run($request, 'login');
             $errors = $this->validation->getErrors();
 
-            if ($errors) {
-                $this->session->setFlashdata('errors', $errors);
-            }
-
             $userModel = new \App\Models\UserModel();
             $username = $this->request->getPost('username');
             $password = $this->request->getPost('password');
@@ -73,6 +69,7 @@ class Auth extends BaseController
                     $sessData = [
                         'username' => $user->username,
                         'userId' => $user->id,
+                        'userRole' => $user->role,
                         'isLoggedIn' => TRUE
                     ];
 

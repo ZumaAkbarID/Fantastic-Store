@@ -33,6 +33,18 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// Admin
+$routes->add('admin', 'Admin::index', ['filter' => 'admin']);
+
+// Barang
+$routes->add('barang', 'Barang::index', ['filter' => 'admin']);
+$routes->add('barang/view', 'Barang::view', ['filter' => 'admin']);
+$routes->add('barang/view/(:num)', 'Barang::view/$1', ['filter' => 'admin']);
+$routes->add('barang/create', 'Barang::create', ['filter' => 'admin']);
+$routes->add('barang/update', 'Barang::update', ['filter' => 'admin']);
+$routes->add('barang/update/(:num)', 'Barang::update/$1', ['filter' => 'admin']);
+$routes->add('barang/delete/(:num)', 'Barang::delete/$1', ['filter' => 'admin']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

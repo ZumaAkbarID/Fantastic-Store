@@ -16,28 +16,24 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">Beranda</a></li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">Store</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="category.html">Top Up Game</a></li>
-                                <li class="nav-item"><a class="nav-link" href="single-product.html">Beli Akun</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Testimoni</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= base_url('admin'); ?>">Menu Admin</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<?= base_url(); ?>">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('etalase'); ?>">Store</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('testimoni'); ?>">Testimoni</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('contact'); ?>">Kontak</a></li>
                         <?php if (!session()->get('isLoggedIn')) : ?>
                         <li class="nav-item" title="Login/Register"><a href="<?= base_url('/auth/login'); ?>"
                                 class="nav-link"><span class="far fa-user"></span></a></li>
                         <?php else : ?>
+                        <?php if (session()->get('userRole') == 0) : ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('admin'); ?>">Dashboard Admin</a>
+                        </li>
+                        <?php endif; ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('riwayat'); ?>">Riwayat
+                                Pembelian</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false"><?= session('username'); ?></a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="login.html">Settings</a></li>
-                                <li class="nav-item"><a class="nav-link" href="tracking.html">Riwayat</a></li>
                                 <li class="nav-item"><a class="nav-link"
                                         href="<?= base_url('auth/logout'); ?>">Logout</a></li>
                             </ul>

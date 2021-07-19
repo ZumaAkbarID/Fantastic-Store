@@ -38,6 +38,8 @@
                                 <dd class="col-9">Rp.<?= $barang->harga; ?></dd>
                                 <dt class="col-3">Stok :</dt>
                                 <dd class="col-9"><?= $barang->stok; ?></dd>
+                                <dt class="col-3">Tipe :</dt>
+                                <dd class="col-9"><?= $barang->tipe; ?></dd>
                                 <dt class="col-3">Deskripsi :</dt>
                                 <dd class="col-9"><?= $barang->deskripsi; ?></dd>
                             </dl>

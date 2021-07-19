@@ -32,6 +32,10 @@ class Barang extends Migration
 			'gambar' => [
 				'type' => 'TEXT',
 			],
+			'tipe' => [
+				'type' => 'VARCHAR',
+				'constraint' => 100,
+			],
 			'created_by' => [
 				'type' => 'INT',
 				'constraint' => 11,

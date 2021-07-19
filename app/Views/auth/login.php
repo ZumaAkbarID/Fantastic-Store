@@ -53,20 +53,6 @@
                             footer: '<a href="<?= base_url('/contact'); ?>">Kesalahan sistem? klik disini</a>'
                         })
                         <?php } ?>
-
-
-                        <?php if ($success !== null) { ?>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Sukses',
-                            text: '<?php foreach ($success as $succ) echo $succ; ?>',
-                            showConfirmButton: False,
-                            timer: 2000
-                        }).then((result) => {
-                            window.location.href = <?= base_url('home'); ?>
-                        })
-
-                        <?php } ?>
                     });
                     </script>
                     <form class="row login_form" action="<?= base_url('/auth/login'); ?>" method="post" id="contactForm"

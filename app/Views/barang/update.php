@@ -7,6 +7,35 @@
             <h1><?= $title; ?></h1>
         </div>
 
+        <?php
+        $session = session();
+        $errors = $session->getFlashdata('errors');
+        $success = $session->getFlashdata('success');
+        ?>
+
+        <script>
+        $(function() {
+
+            <?php if ($errors !== null) { ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan',
+                text: '<?php foreach ($errors as $err) echo $err . ", " ?>',
+                footer: '<a href="<?= base_url('/contact'); ?>">Kesalahan sistem? klik disini</a>'
+            })
+            <?php } ?>
+
+
+            <?php if ($success !== null) { ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '<?= $success; ?>'
+            })
+            <?php } ?>
+        });
+        </script>
+
         <div class="section-body">
             <div class="card">
                 <div class="col-3">
@@ -42,6 +71,21 @@
                             <label>Stok</label>
                             <input type="number" name="stok" id="stok" class="form-control" required min="0"
                                 value="<?= $barang->stok; ?>">
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipe Barang</label>
+                            <select name="tipe" id="tipe" required class="form-control">
+                                <?php
+                                foreach ($tipebarang as $tipe) :
+                                ?>
+                                <option <?= ($barang->tipe == $tipe->tipe) ? 'selected' : ''; ?>
+                                    value="<?= $tipe->tipe; ?>"><?= $tipe->tipe; ?></option>
+                                <?php
+                                endforeach;
+                                ?>
+                            </select>
                             <div class="invalid-feedback">
                             </div>
                         </div>

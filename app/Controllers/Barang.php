@@ -10,6 +10,7 @@ class Barang extends BaseController
         $this->validation = \Config\Services::validation();
         $this->session = session();
         $this->barangModel = new \App\Models\BarangModel();
+        $this->TipeBarangModel = new \App\Models\TipeBarangModel();
         $this->barang = new \App\Entities\Barang();
     }
 
@@ -72,7 +73,6 @@ class Barang extends BaseController
             $request = $this->request->getPost();
             $this->validation->run($request, 'barang');
             $errors = $this->validation->getErrors();
-
             if (!$errors) {
 
                 $barang = $this->barang;
@@ -81,7 +81,7 @@ class Barang extends BaseController
                 $barang->created_by = $this->session->get('userId');
                 $barang->created_date = date('Y-m-d H:i:s');
 
-                $this->barangModel->save($barang);
+                $p = $this->barangModel->save($barang);
 
                 $id = $this->barangModel->InsertID();
 
@@ -89,12 +89,18 @@ class Barang extends BaseController
 
                 return redirect()->to(base_url($segments));
             }
+            $this->session->setFlashdata('errors', $errors);
         }
+
+        $cssLibraries = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>';
 
         $data = [
             'title' => 'Create Barang | Fantastic',
             'page' => 'barang',
-            'subpage' => 'tambah barang'
+            'subpage' => 'tambah barang',
+            'cssLibraries' => $cssLibraries,
+            'tipebarang' => $this->TipeBarangModel->findAll()
         ];
 
         return view('barang/create', $data);
@@ -112,7 +118,9 @@ class Barang extends BaseController
         $jsLibraries = '<script src="/stisla/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
         <br>
         <script src="/stisla/assets/modules/jquery-ui/jquery-ui.min.js"></script>';
-        $cssLibraries = '<link rel="stylesheet" href="/stisla/assets/modules/chocolat/dist/css/chocolat.css">';
+        $cssLibraries = '<link rel="stylesheet" href="/stisla/assets/modules/chocolat/dist/css/chocolat.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>';
 
         if ($this->request->getPost()) {
             $request = $this->request->getPost();
@@ -137,13 +145,15 @@ class Barang extends BaseController
                 $segments = ['barang', 'view', $id];
                 return redirect()->to(base_url($segments));
             }
+            $this->session->setFlashdata('errors', $errors);
         }
 
         $data = [
             'title' => 'Update Barang | Fantastic',
             'barang' => $barang,
             'jsLibraries' => $jsLibraries,
-            'cssLibraries' => $cssLibraries
+            'cssLibraries' => $cssLibraries,
+            'tipebarang' => $this->TipeBarangModel->findAll()
         ];
 
         return view('barang/update', $data);

@@ -12,6 +12,9 @@
 
     <!-- CSS Libraries -->
 
+    <!-- JS Need in Upsite -->
+    <script src="<?= base_url(); ?>/stisla/assets/modules/jquery.min.js"></script>
+
     <?php
     if (isset($cssLibraries)) {
         echo $cssLibraries;
@@ -51,7 +54,6 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script src="<?= base_url(); ?>/stisla/assets/modules/jquery.min.js"></script>
     <script src="<?= base_url(); ?>/stisla/assets/modules/popper.js"></script>
     <script src="<?= base_url(); ?>/stisla/assets/modules/tooltip.js"></script>
     <script src="<?= base_url(); ?>/stisla/assets/modules/bootstrap/js/bootstrap.min.js"></script>

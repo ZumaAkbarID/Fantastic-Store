@@ -25,6 +25,14 @@ class Transaksi extends Migration
 				'constraint' => 11,
 				'unsigned' => TRUE,
 			],
+			'no_order' => [
+				'type' => 'INT',
+				'constraint' => 11,
+			],
+			'tujuan' => [
+				'type' => 'VARCHAR',
+				'constraint' => 100
+			],
 			'jumlah' => [
 				'type' => 'INT',
 				'constraint' => 11,
@@ -32,6 +40,14 @@ class Transaksi extends Migration
 			'total_harga' => [
 				'type' => 'INT',
 				'constraint' => 11,
+			],
+			'pembayaran' => [
+				'type' => 'VARCHAR',
+				'constraint' => 100
+			],
+			'status' => [
+				'type' => 'INT',
+				'constraint' => 1,
 			],
 			'created_by' => [
 				'type' => 'INT',

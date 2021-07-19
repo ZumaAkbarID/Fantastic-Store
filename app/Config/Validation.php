@@ -101,7 +101,7 @@ class Validation
 			'rules' => 'required|is_natural',
 		],
 		'gambar' => [
-			'rules' => 'uploaded[gambar]|ext_in[gambar,png,jpg,gif]|is_image[gambar]',
+			'rules' => 'uploaded[gambar]|is_image[gambar]',
 		],
 		'deskripsi' => [
 			'rules' => 'required|min_length[20]'
@@ -123,7 +123,6 @@ class Validation
 		],
 		'gambar' => [
 			'uploaded' => 'Gambar Harus di upload',
-			'ext_in' => 'Ekstensi Tidak Diizinkan, hanya boleh png, jpg, dan gif',
 			'is_image' => 'File harus gambar'
 		],
 		'deskripsi' => [

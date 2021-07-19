@@ -41,17 +41,20 @@
                         <a href="#">Tandai semua terbaca</a>
                     </div>
                 </div>
+                <?php foreach ($notifikasi as $notif) : ?>
                 <div class="dropdown-list-content dropdown-list-icons">
                     <a href="#" class="dropdown-item dropdown-item-unread">
                         <div class="dropdown-item-icon bg-primary text-white">
-                            <i class="fas fa-code"></i>
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
                         <div class="dropdown-item-desc">
-                            Template update is available now!
+                            Order baru #<?= $notif->no_order; ?>,
+                            Rp.<?= number_format($notif->total_harga, 0, ',', '.'); ?>
                             <div class="time text-primary">2 Min Ago</div>
                         </div>
                     </a>
                 </div>
+                <?php endforeach; ?>
                 <div class="dropdown-footer text-center">
                     <a href="#">Lihat Semua <i class="fas fa-chevron-right"></i></a>
                 </div>
