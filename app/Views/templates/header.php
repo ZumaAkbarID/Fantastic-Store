@@ -19,7 +19,8 @@
                         <li class="nav-item active"><a class="nav-link" href="<?= base_url(); ?>">Beranda</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('etalase'); ?>">Store</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('testimoni'); ?>">Testimoni</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= base_url('contact'); ?>">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" target="_Blank"
+                                href="https://wa.me/6285875963235">Kontak</a></li>
                         <?php if (!session()->get('isLoggedIn')) : ?>
                         <li class="nav-item" title="Login/Register"><a href="<?= base_url('/auth/login'); ?>"
                                 class="nav-link"><span class="far fa-user"></span></a></li>

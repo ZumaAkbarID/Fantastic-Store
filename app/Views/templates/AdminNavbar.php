@@ -41,8 +41,14 @@
                         <a href="#">Tandai semua terbaca</a>
                     </div>
                 </div>
-                <?php foreach ($notifikasi as $notif) : ?>
                 <div class="dropdown-list-content dropdown-list-icons">
+                    <?php foreach ($transaksi as $notif) : ?>
+                    <?php
+                        $dateNow = date('d-m-Y');
+                        $dateTransaksi = date('d-m-Y', strtotime($notif->created_date));
+
+                        if ($dateNow == $dateTransaksi) :
+                        ?>
                     <a href="#" class="dropdown-item dropdown-item-unread">
                         <div class="dropdown-item-icon bg-primary text-white">
                             <i class="fas fa-shopping-cart"></i>
@@ -50,11 +56,12 @@
                         <div class="dropdown-item-desc">
                             Order baru #<?= $notif->no_order; ?>,
                             Rp.<?= number_format($notif->total_harga, 0, ',', '.'); ?>
-                            <div class="time text-primary">2 Min Ago</div>
+                            <div class="time text-primary"><?= $dateTransaksi; ?></div>
                         </div>
                     </a>
+                    <?php endif;
+                    endforeach; ?>
                 </div>
-                <?php endforeach; ?>
                 <div class="dropdown-footer text-center">
                     <a href="#">Lihat Semua <i class="fas fa-chevron-right"></i></a>
                 </div>

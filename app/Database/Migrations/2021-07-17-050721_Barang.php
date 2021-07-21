@@ -26,6 +26,11 @@ class Barang extends Migration
 				'type' => 'INT',
 				'constraint' => 11,
 			],
+			'status' => [
+				'type' => 'INT',
+				'constraint' => 1,
+				'default' => 1,
+			],
 			'deskripsi' => [
 				'type' => 'TEXT'
 			],

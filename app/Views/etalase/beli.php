@@ -27,7 +27,7 @@
                         <div class="col-lg-12">
                             <div class="invoice-title">
                                 <h2>Tagihan</h2>
-                                <div class="invoice-number">Order #<?= $invoice = rand(21, 300); ?></div>
+                                <div class="invoice-number">Order #<?= $invoice = uniqid(); ?></div>
                                 <input type="hidden" name="no_order" value="<?= $invoice; ?>">
                                 <input type="hidden" name="id_barang" value="<?= $model->id; ?>">
                             </div>

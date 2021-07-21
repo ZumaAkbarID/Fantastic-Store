@@ -90,6 +90,15 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Status</label>
+                            <select name="status" id="status" required class="form-control">
+                                <option value="1" selected>Public</option>
+                                <option value="0">Private</option>
+                            </select>
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Gambar</label>
                             <div class="chocolat-parent">
                                 <a href="<?= base_url(); ?>/uploads/barang/img/<?= $barang->gambar; ?>"
@@ -109,14 +118,14 @@
                         </div>
                         <div class="form-group mb-0">
                             <label>Deskripsi</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" required=""
-                                rows="10"><?= $barang->deskripsi; ?></textarea>
+                            <textarea class="summernote" name="deskripsi" id="deskripsi"
+                                required><?= $barang->deskripsi; ?></textarea>
                             <div class="invalid-feedback">
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button name="submit" id="submit" class="btn btn-primary">Tambah</button>
+                        <button name="submit" id="submit" class="btn btn-primary">Perbarui</button>
                     </div>
                 </form>
             </div>

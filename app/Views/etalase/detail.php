@@ -58,7 +58,9 @@
                         <li><a href="#"><span>Ketersediaan</span> : <?= $barang->stok; ?></a></li>
                         <li><a href="#"><span>Desrkipsi</span> :</a></li>
                     </ul>
-                    <p><?= $barang->deskripsi; ?></p>
+                    <div class="text">
+                        <?= $barang->deskripsi; ?>
+                    </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="primary-btn" href="<?= base_url(); ?>/etalase/beli/<?= $barang->id; ?>">Beli</a> |
                         | <a class="primary-btn ml-2" href="<?= base_url('etalase'); ?>">Kembali ke list</a>

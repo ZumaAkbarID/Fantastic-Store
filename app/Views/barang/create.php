@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group mb-0">
                             <label>Deskripsi</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" required=""></textarea>
+                            <textarea class="summernote" name="deskripsi" id="deskripsi" required></textarea>
                             <div class="invalid-feedback">
                             </div>
                         </div>

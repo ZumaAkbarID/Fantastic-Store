@@ -26,8 +26,8 @@ class Transaksi extends Migration
 				'unsigned' => TRUE,
 			],
 			'no_order' => [
-				'type' => 'INT',
-				'constraint' => 11,
+				'type' => 'VARCHAR',
+				'constraint' => 100,
 			],
 			'tujuan' => [
 				'type' => 'VARCHAR',

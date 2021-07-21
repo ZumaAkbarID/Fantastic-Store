@@ -40,6 +40,10 @@
                                 <dd class="col-9"><?= $barang->stok; ?></dd>
                                 <dt class="col-3">Tipe :</dt>
                                 <dd class="col-9"><?= $barang->tipe; ?></dd>
+                                <dt class="col-3">Status :</dt>
+                                <dd class="col-9">
+                                    <?= ($barang->status == 1) ? 'Public' : 'Private'; ?>
+                                </dd>
                                 <dt class="col-3">Deskripsi :</dt>
                                 <dd class="col-9"><?= $barang->deskripsi; ?></dd>
                             </dl>

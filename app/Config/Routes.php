@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 
 // Admin
 $routes->add('admin', 'Admin::index', ['filter' => 'admin']);
+$routes->add('admin/transaksi', 'Admin::transaksi', ['filter' => 'admin']);
 
 // Barang
 $routes->add('barang', 'Barang::index', ['filter' => 'admin']);
@@ -44,6 +45,10 @@ $routes->add('barang/create', 'Barang::create', ['filter' => 'admin']);
 $routes->add('barang/update', 'Barang::update', ['filter' => 'admin']);
 $routes->add('barang/update/(:num)', 'Barang::update/$1', ['filter' => 'admin']);
 $routes->add('barang/delete/(:num)', 'Barang::delete/$1', ['filter' => 'admin']);
+
+// Etalase
+$routes->add('riwayat', 'Etalase::riwayat', ['filter' => 'auth']);
+$routes->add('testimoni', 'Etalase::testimoni');
 
 /*
  * --------------------------------------------------------------------

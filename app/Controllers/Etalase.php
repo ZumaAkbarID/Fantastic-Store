@@ -18,7 +18,7 @@ class Etalase extends BaseController
     {
         $data = [
             'title' => 'List Produk | Fantastic',
-            'barang' => $this->barang->findAll()
+            'barang' => $this->barang->where(['status' => 1])->orderBy('id', 'DESC')->findAll()
         ];
 
         return view('etalase/index', $data);
@@ -34,7 +34,7 @@ class Etalase extends BaseController
 
         $data = [
             'title' => 'List Produk | Fantastic',
-            'barang' => $this->barang->where(['tipe' => $tipe])->findAll()
+            'barang' => $this->barang->where(['tipe' => $tipe, 'status' => 1])->orderBy('id', 'DESC')->findAll()
         ];
 
         return view('etalase/index', $data);
@@ -49,6 +49,10 @@ class Etalase extends BaseController
         }
 
         $barang = $this->barang->find($id);
+
+        if ($barang->status == 0) {
+            return redirect()->to(base_url('etalase'));
+        }
 
         if ($barang->updated_by !== null) {
             $seller = $this->user->find($barang->updated_by);
@@ -106,6 +110,7 @@ class Etalase extends BaseController
             $this->transaksiModel->save($this->transaksi);
 
             $segments = ['etalase', 'success', $this->request->getPost('no_order')];
+
             return redirect()->to(base_url($segments));
         } else {
             return redirect()->back();
@@ -119,6 +124,7 @@ class Etalase extends BaseController
         }
 
         $no_order = $this->request->uri->getSegment(3);
+
         $invoice = $this->transaksiModel->where(['no_order' => $no_order])->first();
 
         if ($no_order == null) {
@@ -138,5 +144,40 @@ class Etalase extends BaseController
         ];
 
         return view('etalase/billing', $data);
+    }
+
+    public function riwayat()
+    {
+        if (!$this->session->get('isLoggedIn')) {
+            return redirect()->to(base_url('auth/login'));
+        }
+
+        $riwayat = $this->transaksiModel->where(['id_pembeli' => $this->session->get('userId')])->orderBy('id', 'DESC')->findAll();
+        $allBarang = $this->barang->findAll();
+
+        $data = [
+            'title' => 'Riwayat Pesanan | Fantastic',
+            'riwayat' => $riwayat,
+            'allBarang' => $allBarang
+        ];
+
+        return view('etalase/riwayat', $data);
+    }
+
+    public function testimoni()
+    {
+        $testimoni = $this->transaksiModel->where(['status' => 3]);
+        $allBarang = $this->barang->findAll();
+        $allUser = $this->user->findAll();
+
+        $data = [
+            'title' => 'Riwayat Pesanan | Fantastic',
+            'testimoni' => $testimoni->orderBy('id', 'DESC')->findAll(),
+            'testimoniCount' => $testimoni->countAll(),
+            'allBarang' => $allBarang,
+            'allUser' => $allUser
+        ];
+
+        return view('etalase/testimoni', $data);
     }
 }
